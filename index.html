@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="dm-sans-font">
+    <header>
+      <div
+        id="navbar"
+        class="navbar px-4 bg-transparent text-white fixed top-0 w-full shadow-sm transition-colors duration-500 ease-in-out z-50"
+      >
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabindex="-1"
+              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            >
+              <li><a>Item 1</a></li>
+              <li>
+                <a>Parent</a>
+                <ul class="p-2">
+                  <li><a>Submenu 1</a></li>
+                  <li><a>Submenu 2</a></li>
+                </ul>
+              </li>
+              <li><a>Item 3</a></li>
+            </ul>
+          </div>
+          <img
+            class="w-12 mr-2"
+            src="./assets/smartcar-high-resolution-logo-transparent.png"
+            alt=""
+          />
+          <h1 class="text-[24px]"><span class="font-bold">CaR</span> Shop</h1>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1">
+            <li><a>Item 1</a></li>
+            <li>
+              <details>
+                <summary>Parent</summary>
+                <ul class="p-2">
+                  <li><a>Submenu 1</a></li>
+                  <li><a>Submenu 2</a></li>
+                </ul>
+              </details>
+            </li>
+            <li><a>Item 3</a></li>
+          </ul>
+        </div>
+        <div class="navbar-end gap-2">
+          <i class="fa-solid fa-user text-[20px]"></i>
+          <div
+            class="flex items-center justify-center gap-2 border-l p-2"
+            onclick="my_modal_4.showModal(),displayCart()"
+          >
+            <span id="cart-count" class="font-bold text-[16px]">0</span>
+            <i class="fa-solid fa-cart-shopping text-[20px]"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="slider w-screen h-screen overflow-hidden relative -mt-16">
+        <!-- Hero Swiper -->
+        <div class="hero-swiper w-full h-full">
+          <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide relative w-full h-full">
+              <img
+                class="w-full h-full object-cover"
+                src="./assets/heroimg1.jpg"
+                alt=""
+              />
+              <div class="absolute inset-0 bg-black/50"></div>
+
+              <div
+                class="absolute top-[40%] w-[1140px] max-w-[80%] left-[10%] pr-[20%] box-border z-10"
+              >
+                <div class="price text-[35px] font-bold text-white">
+                  $35,000
+                </div>
+                <div class="type text-[70px] text-white">2025 BMW 5-Series</div>
+                <button
+                  class="bg-white text-black py-3 px-6 rounded-sm font-bold mt-4"
+                >
+                  Learn More
+                </button>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide relative w-full h-full">
+              <img
+                class="w-full h-full object-cover"
+                src="./assets/heroimg2.jpg"
+                alt=""
+              />
+              <div class="absolute inset-0 bg-black/50"></div>
+
+              <div
+                class="absolute top-[40%] w-[1140px] max-w-[80%] left-[10%] pr-[20%] box-border z-10"
+              >
+                <div class="price text-white">$28,500</div>
+                <div class="type text-[70px] text-white">2024 Audi A4</div>
+                <button
+                  class="bg-white text-black py-3 px-6 rounded-sm font-bold mt-4"
+                >
+                  Learn More
+                </button>
+              </div>
+            </div>
+
+            <div class="swiper-slide relative w-full h-full">
+              <img
+                class="w-full h-full object-cover"
+                src="./assets/heroimg3.webp"
+                alt=""
+              />
+              <div class="absolute inset-0 bg-black/50"></div>
+
+              <div
+                class="absolute top-[40%] w-[1140px] max-w-[80%] left-[10%] pr-[20%] box-border z-10"
+              >
+                <div class="price text-[35px] text-white">$7,1428</div>
+                <div class="type text-[70px] text-white">Tesla Model 3</div>
+                <button
+                  class="bg-white text-black py-3 px-6 rounded-sm font-bold mt-4"
+                >
+                  Learn More
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination for Hero -->
+          <div class="swiper-button-prev text-white"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </section>
+
+      <section class="w-11/12 mx-auto" id="">
+        <div id="category-container" class="category">
+          <div></div>
+        </div>
+      </section>
+
+      <section class="p-5 m-4  bg-[#F9FBFC]">
+        <div class="flex justify-between items-center mb-8">
+          <h1 class="text-[36px] font-bold">Explore All Vehicles</h1>
+          <p>
+            View All
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </p>
+        </div>
+
+        <div class="flex items-center justify-between my-5">
+          <select name="" id="">
+            <option value="">Price Low to High</option>
+            <option value="">Price High to Low</option>
+          </select>
+
+          <input
+            id="search-input"
+            class="rounded-sm py-1 px-4"
+            placeholder="Search"
+            type="text"
+          />
+        </div>
+
+        <div
+          id="all-vehicle"
+          class="grid grid-cols-1 md:grid-cols-4 gap-4"
+        ></div>
+      </section>
+
+      <section class="p-5 w-11/12 mx-auto">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between bg-[#050B20] rounded-lg"
+        >
+          <div class="flex-1 rounded-md">
+            <img
+              class="container w-full  md:h-[500px] md:rounded-l-lg"
+              src="assets/Car-Loans.png"
+              alt=""
+            />
+          </div>
+          <div class="flex-1 p-4 md:p-8">
+            <h1 class="text-white text-[36px]">Auto Loan Calculator</h1>
+            <p class="text-white">
+              Use this car payment calculator to estimate monthly payments on
+              your next new or used auto loan.
+            </p>
+            <div class="m-4 p-4 flex flex-col items-center">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                <!-- price -->
+                <div class="relative w-full max-w-xs">
+                  <input
+                    type="text"
+                    id="price"
+                    placeholder=" "
+                    class="peer w-full rounded-2xl border border-gray-200 bg-white px-4 pt-6 pb-2 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200"
+                  />
+                  <label
+                    for="price"
+                    class="absolute left-4 top-2 text-gray-400 text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm"
+                  >
+                    Price ($)
+                  </label>
+                </div>
+                <!-- Interest Rate -->
+                <div class="relative w-full max-w-xs">
+                  <input
+                    type="text"
+                    id="interestRate"
+                    placeholder=" "
+                    class="peer w-full rounded-2xl border border-gray-200 bg-white px-4 pt-6 pb-2 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200"
+                  />
+                  <label
+                    for="interestRate"
+                    class="absolute left-4 top-2 text-gray-400 text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm"
+                  >
+                    Interest Rate
+                  </label>
+                </div>
+
+                <!-- Loan Term (year) -->
+                <div class="relative w-full max-w-xs">
+                  <input
+                    type="text"
+                    id="loanTerm"
+                    placeholder=" "
+                    class="peer w-full rounded-2xl border border-gray-200 bg-white px-4 pt-6 pb-2 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200"
+                  />
+                  <label
+                    for="loanTerm"
+                    class="absolute left-4 top-2 text-gray-400 text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm"
+                  >
+                    Loan Term (year)
+                  </label>
+                </div>
+
+                <!-- Down Payment -->
+                <div class="relative w-full max-w-xs">
+                  <input
+                    type="text"
+                    id="downpayment"
+                    placeholder=" "
+                    class="peer w-full rounded-2xl border border-gray-200 bg-white px-4 pt-6 pb-2 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200"
+                  />
+                  <label
+                    for="downpayment"
+                    class="absolute left-4 top-2 text-gray-400 text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm"
+                  >
+                    Down Payment
+                  </label>
+                </div>
+              </div>
+              <h2 class="text-white m-5 text-[20px]">
+                $
+                <span id="permont" class="font-semibold text-[24px]">500</span>
+                per month
+              </h2>
+              <button class="btn rounded-2xl w-full btn-primary">
+                Primary
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="reviwe p-5 w-11/12 mx-auto ">
+        <div class="flex items-center justify-between my-10">
+          <h1 class="text-[36px] font-bold">What our customers say</h1>
+          <p>Rated 4.7 / 5 based on 28,370 reviews</p>
+        </div>
+        <div class="swiper">
+          <div id="reviwe-container" class="swiper-wrapper">
+            <div class="p-5 swiper-slide shadow-sm rounded-xl">
+              <div class="flex items-center justify-between mb-4">
+                <div class="star flex items-center gap-1">
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                </div>
+
+                <div class="verified flex items-center text-white gap-2">
+                  <div
+                    class="bg-[#6C6C83] flex items-center justify-center text-[10px] rounded-full p-1 font-bold"
+                  >
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                  <p class="text-[16px] text-[#6C6C83]">Verified</p>
+                </div>
+              </div>
+
+              <div class="flex flex-col items-start gap-3">
+                <h2 class="text-[20px] font-semibold">
+                  Sales process was simple and easy
+                </h2>
+                <p class="text-[18px] text-gray-400">
+                  Sales process was simple and easy. Maximillion was friendly
+                  and I didn’t feel...
+                </p>
+                <div class="flex items-center justify-between w-full">
+                  <p class="text-[16px] font-bold">Ali Tufan</p>
+                  <p class="text-[16px]">24/344/343</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 swiper-slide shadow-sm rounded-xl">
+              <div class="flex items-center justify-between mb-4">
+                <div class="star flex items-center gap-1">
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                </div>
+
+                <div class="verified flex items-center text-white gap-2">
+                  <div
+                    class="bg-[#6C6C83] flex items-center justify-center text-[10px] rounded-full p-1 font-bold"
+                  >
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                  <p class="text-[16px] text-[#6C6C83]">Verified</p>
+                </div>
+              </div>
+
+              <div class="flex flex-col items-start gap-3">
+                <h2 class="text-[20px] font-semibold">
+                  Sales process was simple and easy
+                </h2>
+                <p class="text-[18px] text-gray-400">
+                  Sales process was simple and easy. Maximillion was friendly
+                  and I didn’t feel...
+                </p>
+                <p class="text-[16px] font-bold">Ali Tufan</p>
+              </div>
+            </div>
+
+            <div class="p-5 swiper-slide shadow-sm rounded-xl">
+              <div class="flex items-center justify-between mb-4">
+                <div class="star flex items-center gap-1">
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                </div>
+
+                <div class="verified flex items-center text-white gap-2">
+                  <div
+                    class="bg-[#6C6C83] flex items-center justify-center text-[10px] rounded-full p-1 font-bold"
+                  >
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                  <p class="text-[16px] text-[#6C6C83]">Verified</p>
+                </div>
+              </div>
+
+              <div class="flex flex-col items-start gap-3">
+                <h2 class="text-[20px] font-semibold">
+                  Sales process was simple and easy
+                </h2>
+                <p class="text-[18px] text-gray-400">
+                  Sales process was simple and easy. Maximillion was friendly
+                  and I didn’t feel...
+                </p>
+                <p class="text-[16px] font-bold">Ali Tufan</p>
+              </div>
+            </div>
+
+            <div class="p-5 swiper-slide shadow-sm rounded-xl">
+              <div class="flex items-center justify-between mb-4">
+                <div class="star flex items-center gap-1">
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                </div>
+
+                <div class="verified flex items-center text-white gap-2">
+                  <div
+                    class="bg-[#6C6C83] flex items-center justify-center text-[10px] rounded-full p-1 font-bold"
+                  >
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                  <p class="text-[16px] text-[#6C6C83]">Verified</p>
+                </div>
+              </div>
+
+              <div class="flex flex-col items-start gap-3">
+                <h2 class="text-[20px] font-semibold">
+                  Sales process was simple and easy
+                </h2>
+                <p class="text-[18px] text-gray-400">
+                  Sales process was simple and easy. Maximillion was friendly
+                  and I didn’t feel...
+                </p>
+                <p class="text-[16px] font-bold">Ali Tufan</p>
+              </div>
+            </div>
+
+            <div class="p-5 swiper-slide shadow-sm rounded-xl">
+              <div class="flex items-center justify-between mb-4">
+                <div class="star flex items-center gap-1">
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <div class="bg-[#00B67A] p-1 text-white">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                </div>
+
+                <div class="verified flex items-center text-white gap-2">
+                  <div
+                    class="bg-[#6C6C83] flex items-center justify-center text-[10px] rounded-full p-1 font-bold"
+                  >
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                  <p class="text-[16px] text-[#6C6C83]">Verified</p>
+                </div>
+              </div>
+
+              <div class="flex flex-col items-start gap-3">
+                <h2 class="text-[20px] font-semibold">
+                  Sales process was simple and easy
+                </h2>
+                <p class="text-[18px] text-gray-400">
+                  Sales process was simple and easy. Maximillion was friendly
+                  and I didn’t feel...
+                </p>
+                <p class="text-[16px] font-bold">Ali Tufan</p>
+              </div>
+            </div>
+          </div>
+          <div class="m-8">
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Open the modal using ID.showModal() method -->
+
+    <!-- You can open the modal using ID.showModal() method -->
+    <button class="btn" onclick="my_modal_4.showModal()">open modal</button>
+    <dialog id="my_modal_4" class="modal">
+      <div class="modal-box w-11/12 max-w-5xl">
+        <div class="grid grid-cols-2">
+          <!-- Left Side -->
+          <div class="">
+            <h1 class="text-[24px]">Shping Cart</h1>
+            <div id="cart-cotainer" class="">
+              <div
+                class="flex items-center justify-between shadow-md p-3 rounded-lg m-5"
+              >
+                <div class="flex items-center gap-3">
+                  <div>
+                    <img class="w-40 h-20" src="assets/car/car3.avif" alt="" />
+                  </div>
+                  <div>
+                    <h2 class="text-[24px] font-bold">Tesla Midel 3</h2>
+                    <h2 class="text-[20px]">$35000 x 1</h2>
+                  </div>
+                </div>
+                <i class="text-[24px] fa-solid fa-xmark"></i>
+              </div>
+            </div>
+          </div>
+          <!-- Right Side -->
+          <div class="">
+            <h2 class="text-[24px]">Order Summary</h2>
+            <div class="flex flex-col border-l p-4">
+              <div class="p-3">
+                <div class="flex flex-col items-start justify-center">
+                  <p class="text-[18px] mb-3">Promo Code</p>
+                  <input
+                    id="promoCode"
+                    type="text"
+                    placeholder="Type here"
+                    class="input mb-1"
+                  />
+                  <button
+                    onclick="handlePromoCode()"
+                    class="text-[14px] text-blue-600"
+                  >
+                    Apply Code
+                  </button>
+                </div>
+              </div>
+              <div>
+                <div class="flex items-center justify-between">
+                  <p class="text-[16px]">Discount</p>
+                  <p id="discount">0</p>
+                </div>
+                <div class="flex items-center justify-between">
+                  <p class="text-[24px] font-semibold">Subtotal</p>
+                  <p class="text-[24px] font-bold">
+                    $<span id="subtotal">0</span>
+                  </p>
+                </div>
+
+                <button
+                  onclick=""
+                  class="btn w-full btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl"
+                >
+                  Place Order
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button, it will close the modal -->
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Back to Top Button -->
+    <button
+      id="backToTop"
+      class="hidden fixed bottom-6 right-6 bg-blue-600 text-white text-lg p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300"
+    >
+      ↑
+    </button>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

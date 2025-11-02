@@ -1,0 +1,56 @@
+{
+  "status": true,
+  "message": "successfully fetched categories data",
+  "categories": [
+    {
+      "id": 1,
+      "category_name": "Smartphone",
+      "small_description": "Latest Android and iOS smartphones with advanced features and sleek designs."
+    },
+    {
+      "id": 2,
+      "category_name": "Laptop",
+      "small_description": "Powerful and portable laptops for work, gaming, and entertainment."
+    },
+    {
+      "id": 3,
+      "category_name": "Smartwatch",
+      "small_description": "Wearable smart devices to track health, fitness, and notifications on the go."
+    },
+    {
+      "id": 4,
+      "category_name": "Tablet",
+      "small_description": "Lightweight and versatile tablets for reading, drawing, and productivity."
+    },
+    {
+      "id": 5,
+      "category_name": "Headphone & Earbud",
+      "small_description": "High-quality wired and wireless headphones and earbuds for immersive audio."
+    },
+    {
+      "id": 6,
+      "category_name": "Smart TV",
+      "small_description": "Modern smart TVs with 4K displays, streaming apps, and voice control."
+    },
+    {
+      "id": 7,
+      "category_name": "Gaming Console",
+      "small_description": "Latest gaming consoles and accessories for an ultimate gaming experience."
+    },
+    {
+      "id": 8,
+      "category_name": "Camera & Drone",
+      "small_description": "DSLRs, mirrorless cameras, and drones for photography and videography enthusiasts."
+    },
+    {
+      "id": 9,
+      "category_name": "Home Appliance",
+      "small_description": "Smart home devices and appliances for convenience and energy efficiency."
+    },
+    {
+      "id": 10,
+      "category_name": "Accessories",
+      "small_description": "Chargers, power banks, cases, and other essential electronic accessories."
+    }
+  ]
+}

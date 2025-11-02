@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LocalStorage Login Demo</title>
+  <script defer>
+// ---------- Utility: Hash password with SHA-256 ----------
+const hashPassword = async (password) => {
+  const enc = new TextEncoder();
+  const data = enc.encode(password);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+};
+
+// ---------- Storage helpers ----------
+const STORAGE_USERS_KEY = 'ls_users';      // stores array of user objects
+const STORAGE_AUTH_KEY = 'ls_auth_user';  // stores email of logged-in user
+
+const getUsers = () => JSON.parse(localStorage.getItem(STORAGE_USERS_KEY)) || [];
+const saveUsers = (users) => localStorage.setItem(STORAGE_USERS_KEY, JSON.stringify(users));
+const setAuthUser = (email) => localStorage.setItem(STORAGE_AUTH_KEY, email);
+const clearAuthUser = () => localStorage.removeItem(STORAGE_AUTH_KEY);
+const getAuthUser = () => localStorage.getItem(STORAGE_AUTH_KEY);
+
+// ---------- Registration ----------
+const registerUser = async ({ name, email, password }) => {
+  if (!name || !email || !password) throw new Error('Missing fields');
+
+  const users = getUsers();
+  if (users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
+    throw new Error('User already exists with that email');
+  }
+
+  const passwordHash = await hashPassword(password);
+  const newUser = { id: Date.now(), name, email: email.toLowerCase(), passwordHash, createdAt: new Date().toISOString() };
+  users.push(newUser);
+  saveUsers(users);
+  // Optionally auto-login
+  setAuthUser(newUser.email);
+  return newUser;
+};
+
+// ---------- Login ----------
+const loginUser = async ({ email, password }) => {
+  if (!email || !password) throw new Error('Missing fields');
+
+  const users = getUsers();
+  const user = users.find(u => u.email === email.toLowerCase());
+  if (!user) throw new Error('No user found with that email');
+
+  const passwordHash = await hashPassword(password);
+  if (passwordHash !== user.passwordHash) throw new Error('Invalid credentials');
+
+  setAuthUser(user.email);
+  return user;
+};
+
+// ---------- Logout ----------
+const logoutUser = () => {
+  clearAuthUser();
+};
+
+// ---------- Auth helpers ----------
+const isAuthenticated = () => Boolean(getAuthUser());
+const getCurrentUser = () => {
+  const email = getAuthUser();
+  if (!email) return null;
+  return getUsers().find(u => u.email === email) || null;
+};
+
+// ---------- UI wiring ----------
+document.addEventListener('DOMContentLoaded', () => {
+  const regForm = document.getElementById('register-form');
+  const loginForm = document.getElementById('login-form');
+  const logoutBtn = document.getElementById('logout-btn');
+  const userBox = document.getElementById('user-box');
+  const messageBox = document.getElementById('message');
+
+  const showMessage = (msg, type='info') => {
+    messageBox.textContent = msg;
+    messageBox.className = type === 'error' ? 'text-red-600' : 'text-green-600';
+    setTimeout(()=>{ messageBox.textContent = '' }, 3500);
+  };
+
+  const refreshUI = () => {
+    const current = getCurrentUser();
+    if (current) {
+      userBox.innerHTML = `
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">${current.name[0].toUpperCase()}</div>
+          <div>
+            <div class="font-semibold">${current.name}</div>
+            <div class="text-sm text-gray-500">${current.email}</div>
+          </div>
+          <button id="logout-btn" class="ml-6 text-sm text-blue-600">Logout</button>
+        </div>
+      `;
+      const lb = document.getElementById('logout-btn');
+      lb && lb.addEventListener('click', () => {
+        logoutUser();
+        refreshUI();
+        showMessage('Logged out', 'info');
+      });
+      // hide forms
+      regForm.classList.add('hidden');
+      loginForm.classList.add('hidden');
+    } else {
+      userBox.innerHTML = `<div class="text-sm text-gray-700">Not signed in</div>`;
+      regForm.classList.remove('hidden');
+      loginForm.classList.remove('hidden');
+    }
+  };
+
+  // Register submit
+  regForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('reg-name').value.trim();
+    const email = document.getElementById('reg-email').value.trim();
+    const pass = document.getElementById('reg-pass').value;
+    try {
+      await registerUser({ name, email, password: pass });
+      refreshUI();
+      showMessage('Registered & logged in!');
+      regForm.reset();
+    } catch (err) {
+      showMessage(err.message, 'error');
+    }
+  });
+
+  // Login submit
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value.trim();
+    const pass = document.getElementById('login-pass').value;
+    try {
+      await loginUser({ email, password: pass });
+      refreshUI();
+      showMessage('Logged in successfully');
+      loginForm.reset();
+    } catch (err) {
+      showMessage(err.message, 'error');
+    }
+  });
+
+  // initial render
+  refreshUI();
+});
+  </script>
+
+  <!-- Tailwind CDN for quick styling (optional for demo) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-start justify-center p-6">
+  <div class="w-full max-w-3xl bg-white rounded-lg shadow p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-bold">LocalStorage Auth Demo</h2>
+      <div id="user-box" class="text-sm"></div>
+    </div>
+
+    <p id="message" class="mb-4 text-sm"></p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Register -->
+      <form id="register-form" class="space-y-3 bg-white">
+        <h3 class="font-semibold">Register</h3>
+        <input id="reg-name" class="w-full border rounded px-3 py-2" placeholder="Full name" required />
+        <input id="reg-email" class="w-full border rounded px-3 py-2" placeholder="Email" type="email" required />
+        <input id="reg-pass" class="w-full border rounded px-3 py-2" placeholder="Password" type="password" required />
+        <button class="bg-blue-600 text-white px-4 py-2 rounded">Register & Login</button>
+      </form>
+
+      <!-- Login -->
+      <form id="login-form" class="space-y-3 bg-white">
+        <h3 class="font-semibold">Login</h3>
+        <input id="login-email" class="w-full border rounded px-3 py-2" placeholder="Email" type="email" required />
+        <input id="login-pass" class="w-full border rounded px-3 py-2" placeholder="Password" type="password" required />
+        <button class="bg-green-600 text-white px-4 py-2 rounded">Login</button>
+      </form>
+    </div>
+
+    <div class="mt-6">
+      <h4 class="font-semibold mb-2">Stored Users (for demo)</h4>
+      <pre id="debug" class="p-3 bg-gray-100 rounded text-xs h-32 overflow-auto"></pre>
+    </div>
+  </div>
+
+  <script>
+    // tiny debug live-updater for the users list (dev convenience)
+    const debugEl = document.getElementById('debug');
+    const updateDebug = () => {
+      debugEl.textContent = JSON.stringify(JSON.parse(localStorage.getItem('ls_users') || '[]'), null, 2);
+    };
+    // observe storage changes for other tabs
+    window.addEventListener('storage', updateDebug);
+    // update periodically and on load
+    setInterval(updateDebug, 800);
+    updateDebug();
+  </script>
+</body>
+</html>

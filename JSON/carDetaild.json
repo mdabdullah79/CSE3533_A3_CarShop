@@ -1,0 +1,227 @@
+
+{
+  "status": true,
+  "message": "successfully fetched products data",
+  "products": [
+    {
+      "id": 1,
+      "image": "../assets/car/car1.avif",
+      "name": "Toyota Corolla 2024",
+      "description": "Reliable and fuel-efficient compact sedan offering smooth performance and modern design.",
+      "category": "Sedan",
+      "price": 2800000,
+      "price_usd": 26666,
+      "mile": 18,
+      "type": "CVT"
+    },
+    {
+      "id": 2,
+      "image": "../assets/car/car2.avif",
+      "name": "Honda Civic 2024",
+      "description": "Sporty sedan with a sleek design, turbo engine, and advanced safety features.",
+      "category": "Sedan",
+      "price": 3400000,
+      "price_usd": 32380,
+      "mile": 17,
+      "type": "Automatic"
+    },
+    {
+      "id": 3,
+      "image": "../assets/car/car3.avif",
+      "name": "Hyundai Sonata",
+      "description": "Premium sedan with luxurious comfort, high performance, and smart tech.",
+      "category": "Sedan",
+      "price": 4200000,
+      "price_usd": 40000,
+      "mile": 16,
+      "type": "Automatic"
+    },
+    {
+      "id": 4,
+      "image": "../assets/car/car4.jpg",
+      "name": "Toyota Fortuner",
+      "description": "Rugged and powerful SUV designed for both city drives and off-road adventures.",
+      "category": "SUV",
+      "price": 6500000,
+      "price_usd": 61904,
+      "mile": 12,
+      "type": "Automatic"
+    },
+    {
+      "id": 5,
+      "image": "../assets/car/car5.avif",
+      "name": "Honda CR-V",
+      "description": "Comfortable and spacious SUV offering hybrid powertrain and modern safety features.",
+      "category": "SUV",
+      "price": 5500000,
+      "price_usd": 52380,
+      "mile": 14,
+      "type": "CVT"
+    },
+    {
+      "id": 6,
+      "image": "../assets/car/car6.avif",
+      "name": "Hyundai Tucson",
+      "description": "Stylish mid-size SUV with advanced tech, safety, and comfort features.",
+      "category": "SUV",
+      "price": 4700000,
+      "price_usd": 44761,
+      "mile": 15,
+      "type": "Automatic"
+    },
+    {
+      "id": 7,
+      "image": "../assets/car/car7.webp",
+      "name": "Tesla Model 3",
+      "description": "All-electric sedan offering impressive acceleration, range, and autopilot features.",
+      "category": "Electric Car",
+      "price": 7500000,
+      "price_usd": 71428,
+      "mile": 480,
+      "type": "Electric"
+    },
+    {
+      "id": 8,
+      "image": "../assets/car/car8.avif",
+      "name": "Nissan Leaf",
+      "description": "Affordable electric car known for reliability and efficiency.",
+      "category": "Electric Car",
+      "price": 4200000,
+      "price_usd": 40000,
+      "mile": 350,
+      "type": "Electric"
+    },
+    {
+      "id": 9,
+      "image": "../assets/car/car.jpg",
+      "name": "BMW i4",
+      "description": "Luxury electric sedan with dynamic driving and futuristic interior design.",
+      "category": "Electric Car",
+      "price": 9500000,
+      "price_usd": 90476,
+      "mile": 510,
+      "type": "Electric"
+    },
+    {
+      "id": 10,
+      "image": "../assets/car/car.jpg",
+      "name": "Yamaha R15 V4",
+      "description": "Stylish sports bike featuring aerodynamic design and powerful engine.",
+      "category": "Bike",
+      "price": 550000,
+      "price_usd": 5238,
+      "mile": 45,
+      "type": "Manual"
+    },
+    {
+      "id": 11,
+      "image": "../assets/car/car.jpg",
+      "name": "Honda CBR 150R",
+      "description": "High-performance bike with smooth handling and a striking design.",
+      "category": "Bike",
+      "price": 570000,
+      "price_usd": 5428,
+      "mile": 42,
+      "type": "Manual"
+    },
+    {
+      "id": 12,
+      "image": "../assets/car/car.jpg",
+      "name": "Royal Enfield Classic 350",
+      "description": "Iconic cruiser motorcycle offering timeless design and powerful performance.",
+      "category": "Bike",
+      "price": 490000,
+      "price_usd": 4666,
+      "mile": 35,
+      "type": "Manual"
+    },
+    {
+      "id": 13,
+      "image": "../assets/car/car.jpg",
+      "name": "Ford Ranger",
+      "description": "Strong pickup truck with turbo diesel engine and advanced 4x4 capabilities.",
+      "category": "Truck",
+      "price": 7200000,
+      "price_usd": 68571,
+      "mile": 10,
+      "type": "Automatic"
+    },
+    {
+      "id": 14,
+      "image": "../assets/car/car.jpg",
+      "name": "Toyota Hilux",
+      "description": "Reliable pickup with great off-road power and utility features.",
+      "category": "Truck",
+      "price": 6800000,
+      "price_usd": 64761,
+      "mile": 11,
+      "type": "Manual"
+    },
+    {
+      "id": 15,
+      "image": "../assets/car/car.jpg",
+      "name": "Isuzu D-Max",
+      "description": "Durable truck offering strength, comfort, and excellent towing power.",
+      "category": "Truck",
+      "price": 7000000,
+      "price_usd": 66666,
+      "mile": 12,
+      "type": "Manual"
+    },
+    {
+      "id": 16,
+      "image": "../assets/car/car.jpg",
+      "name": "Toyota Prius Hybrid",
+      "description": "Eco-friendly hybrid car with excellent fuel efficiency and advanced features.",
+      "category": "Hybrid Car",
+      "price": 4800000,
+      "price_usd": 45714,
+      "mile": 25,
+      "type": "Hybrid Automatic"
+    },
+    {
+      "id": 17,
+      "image": "https://i.ibb.co.com/pPzB8s5/honda-insight.jpg",
+      "name": "Honda Insight",
+      "description": "Hybrid sedan offering a perfect blend of performance and efficiency.",
+      "category": "Hybrid Car",
+      "price": 4500000,
+      "price_usd": 42857,
+      "mile": 23,
+      "type": "Hybrid CVT"
+    },
+    {
+      "id": 18,
+      "image": "https://i.ibb.co.com/fDgwQpV/kia-nero.jpg",
+      "name": "Kia Niro Hybrid",
+      "description": "Compact hybrid crossover with excellent mileage and spacious interior.",
+      "category": "Hybrid Car",
+      "price": 4700000,
+      "price_usd": 44761,
+      "mile": 26,
+      "type": "Hybrid Automatic"
+    },
+    {
+      "id": 19,
+      "image": "https://i.ibb.co.com/hBX2k8F/car-battery.jpg",
+      "name": "Amaron Car Battery",
+      "description": "Long-lasting and reliable car battery compatible with most models.",
+      "category": "Accessories",
+      "price": 8000,
+      "price_usd": 76,
+      "mile": null,
+      "type": "N/A"
+    },
+    {
+      "id": 20,
+      "image": "https://i.ibb.co.com/TYbTXMp/car-cover.jpg",
+      "name": "Waterproof Car Cover",
+      "description": "Protective car cover designed to resist dust, rain, and sunlight.",
+      "category": "Accessories",
+      "price": 2500,
+      "price_usd": 23,
+      "mile": null,
+      "type": "N/A"
+    }
+  ]
+}

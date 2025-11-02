@@ -1,0 +1,86 @@
+{
+  "status": true,
+  "message": "successfully fetched customer reviews",
+  "reviews": [
+    {
+      "id": 1,
+      "customer_name": "Arif Hossain",
+      "comment": "Excellent service!",
+      "description": "Bought my Toyota Corolla from here — smooth transaction and great support team. Highly recommended!",
+      "star": 5,
+      "date": "2025-10-12"
+    },
+    {
+      "id": 2,
+      "customer_name": "Nusrat Jahan",
+      "comment": "Very satisfied",
+      "description": "The laptop I purchased arrived on time and in perfect condition. Packaging was impressive too.",
+      "star": 5,
+      "date": "2025-10-10"
+    },
+    {
+      "id": 3,
+      "customer_name": "Rakib Hasan",
+      "comment": "Good, but room for improvement",
+      "description": "Product quality is good, but customer support took some time to respond to my query.",
+      "star": 4,
+      "date": "2025-10-08"
+    },
+    {
+      "id": 4,
+      "customer_name": "Mithila Akter",
+      "comment": "Value for money",
+      "description": "Got a smartwatch at a very reasonable price. Works well and looks premium.",
+      "star": 4,
+      "date": "2025-10-07"
+    },
+    {
+      "id": 5,
+      "customer_name": "Sajid Ahmed",
+      "comment": "Highly recommended!",
+      "description": "Fast delivery, friendly staff, and authentic products. One of the best online stores in Bangladesh.",
+      "star": 5,
+      "date": "2025-10-05"
+    },
+    {
+      "id": 6,
+      "customer_name": "Tania Rahman",
+      "comment": "Average experience",
+      "description": "Received the product 2 days late, but it was in good condition. Overall okay experience.",
+      "star": 3,
+      "date": "2025-10-04"
+    },
+    {
+      "id": 7,
+      "customer_name": "Imran Khan",
+      "comment": "Outstanding quality",
+      "description": "Purchased a Smart TV — picture quality and sound are top-notch! Worth every penny.",
+      "star": 5,
+      "date": "2025-10-02"
+    },
+    {
+      "id": 8,
+      "customer_name": "Shakil Chowdhury",
+      "comment": "Decent products",
+      "description": "Headphones are good, but the packaging could be improved. Still happy with the purchase.",
+      "star": 4,
+      "date": "2025-10-01"
+    },
+    {
+      "id": 9,
+      "customer_name": "Farhana Islam",
+      "comment": "Great experience",
+      "description": "Ordered a gaming console — smooth purchase process and fast delivery. Great job!",
+      "star": 5,
+      "date": "2025-09-30"
+    },
+    {
+      "id": 10,
+      "customer_name": "Tanvir Ahmed",
+      "comment": "Not bad",
+      "description": "The camera I received was fine, but the instruction manual was missing. Still works perfectly.",
+      "star": 4,
+      "date": "2025-09-28"
+    }
+  ]
+}
