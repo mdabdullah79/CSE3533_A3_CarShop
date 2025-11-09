@@ -24,6 +24,10 @@ if (activeId) {
     activeElement.classList.add("active");
   }
 }
+
+
+
+
 // Data From LocalStorage: Common utilities
 const getUsers = () => JSON.parse(localStorage.getItem("customers")) || [];
 const getActiveUser = () => JSON.parse(localStorage.getItem("activeUser"));
@@ -54,4 +58,18 @@ if (getActiveUser()) {
 
 
 
-
+const heroSwiper = new Swiper(".hero-swiper", {
+  loop: true,
+  speed: 800,
+  effect: "slide",
+  fadeEffect: { crossFade: true },
+  autoplay: {
+    delay: 4000,
+    disableOnInteraction: false,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+    clickable: true,
+  },
+});
