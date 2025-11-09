@@ -1,4 +1,15 @@
 const AllCartData = [];
+// Data From LocalStorage
+const getUsers = () => JSON.parse(localStorage.getItem("customers")) || [];
+const getActiveUser = () => JSON.parse(localStorage.getItem("activeUser"));
+const clearActiveUser = () => localStorage.removeItem("activeUser");
+const getCartData = ()=> JSON.parse(localStorage.getItem("CartData")) || [];
+const saveUsers = (users) =>
+  localStorage.setItem("customers", JSON.stringify(users));
+const setActiveUser = (user) =>
+  localStorage.setItem("activeUser", JSON.stringify(user));
+const clearCart = () => localStorage.removeItem("CartData");
+let activeUser = getActiveUser();
 // Navbar All Functionality
 //> 1.Navigate
 
@@ -152,6 +163,7 @@ const displayEachCar = (data) => {
 };
 loadEachCar();
 
+// Review
 const loadReview = () => {
   fetch("./JSON/review.json")
     .then((response) => response.json())
@@ -205,8 +217,42 @@ const displayReview = (data) => {
 };
 loadReview();
 
+// Swiper for Review
+const swiper = new Swiper(".swiper", {
+  speed: 300,
+  spaceBetween: 30,
+
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+
+  grabCursor: true,
+
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 3,
+    },
+  },
+});
+
 // CartOption
 const AddtoCart = (id) => {
+  if (!activeUser) {
+    alert("login please");
+    return;
+  }
   const LocalAllCartData = JSON.parse(localStorage.getItem("CartData")) || [];
   fetch("./JSON/carDetaild.json")
     .then((response) => response.json())
@@ -241,7 +287,14 @@ const AddtoCart = (id) => {
     });
 };
 
+  document.getElementById('clear-all').addEventListener('click',()=>{
+    clearCart();
+    displayCart();
+    updateCartCount();
+})
+
 const displayCart = () => {
+
   const CartConatainer = document.getElementById("cart-cotainer");
   CartConatainer.innerHTML = "";
   const LocalAllCartData = JSON.parse(localStorage.getItem("CartData")) || [];
@@ -266,12 +319,40 @@ const displayCart = () => {
               </div>
         `;
     CartConatainer.appendChild(Car);
+    
   }
 
+  
+ let discount = parseInt(document.getElementById("discount").innerText) || 0;
   let currentSubtotal =
     parseInt(document.getElementById("subtotal").innerText) || 0;
   currentSubtotal = +subtotal;
   document.getElementById("subtotal").innerText = currentSubtotal;
+  document.getElementById("total").innerText = currentSubtotal-discount;
+  
+  
+};
+
+const handlePromoCode = () => {
+  let Promocode = document
+    .getElementById("promoCode")
+    .value.trim()
+    .toUpperCase();
+  let currentTotal =
+    parseInt(document.getElementById("total").innerText) || 0;
+  console.log(Promocode);
+
+  if (Promocode === "SMART20") {
+    const discount = currentTotal * 0.2;
+    currentTotal -= discount;
+    document.getElementById("total").innerText = currentTotal;
+    document.getElementById("discount").innerText = discount.toFixed(2);
+    document.getElementById("apply-coupon").textContent = "Applied";
+    document.getElementById("apply-coupon").disabled = true;
+    Promocode.value = "dfefegg";
+  } else {
+    alert("Ivalid PromoCode !");
+  }
 };
 
 const updateCartCount = () => {
@@ -289,58 +370,7 @@ const handleRemoveCart = (id) => {
 };
 updateCartCount();
 
-const handlePromoCode = () => {
-  let Promocode = document
-    .getElementById("promoCode")
-    .value.trim()
-    .toUpperCase();
-  let currentSubtotal =
-    parseInt(document.getElementById("subtotal").innerText) || 0;
-  console.log(Promocode);
 
-  if (Promocode === "SMART20") {
-    const discount = currentSubtotal * 0.2;
-    currentSubtotal -= discount;
-    document.getElementById("subtotal").innerText = currentSubtotal;
-    document.getElementById("discount").innerText = discount.toFixed(2);
-    document.getElementById("apply-coupon").textContent = "Applied";
-    document.getElementById("apply-coupon").disabled = true;
-    Promocode.value = "dfefegg";
-  } else {
-    alert("Ivalid PromoCode !");
-  }
-  console.log(currentSubtotal);
-};
-
-// Swiper for sliding
-const swiper = new Swiper(".swiper", {
-  speed: 300,
-  spaceBetween: 30,
-
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-  },
-
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-
-  grabCursor: true,
-
-  breakpoints: {
-    320: {
-      slidesPerView: 1,
-    },
-    768: {
-      slidesPerView: 2,
-    },
-    1024: {
-      slidesPerView: 3,
-    },
-  },
-});
 
 // ✅ New Swiper for Hero Banner
 const heroSwiper = new Swiper(".hero-swiper", {
@@ -360,8 +390,8 @@ const heroSwiper = new Swiper(".hero-swiper", {
   },
 });
 
+// backToTop
 const backToTopBtn = document.getElementById("backToTop");
-
 // Show or hide button on scroll
 window.addEventListener("scroll", () => {
   if (window.scrollY > 300) {
@@ -380,6 +410,7 @@ backToTopBtn.addEventListener("click", () => {
     behavior: "smooth",
   });
 });
+
 
 // contact form
 const form = document.getElementById("contactForm");
@@ -437,20 +468,11 @@ form.addEventListener("submit", (e) => {
   }
 });
 
-const getUsers = () => JSON.parse(localStorage.getItem("customers")) || [];
-const getActiveUser = () => JSON.parse(localStorage.getItem("activeUser"));
-const clearActiveUser = () => localStorage.removeItem("activeUser");
-const saveUsers = (users) =>
-  localStorage.setItem("customers", JSON.stringify(users));
-const setActiveUser = (user) =>
-  localStorage.setItem("activeUser", JSON.stringify(user));
 
-const clearCart = () => localStorage.removeItem("CartData");
 
-const ProfileCart = document.getElementById("profilecart");
-const HomeLogin = document.getElementById("homeLogin");
 
-let activeUser = getActiveUser();
+
+
 const nameEl = document.getElementById("userName");
 const emailEl = document.getElementById("userEmail");
 const balanceEl = document.getElementById("balance");
@@ -484,9 +506,13 @@ logoutBtn.addEventListener("click", () => {
   alert("You have logged out!");
 });
 
+const ProfileCart = document.getElementById("profilecart");
+const HomeLogin = document.getElementById("homeLogin");
 if (getActiveUser()) {
   ProfileCart.classList.remove("hidden");
   ProfileCart.classList.add("flex");
   HomeLogin.classList.add("hidden");
   showProfile();
 }
+
+
