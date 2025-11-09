@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- dsaisyui -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- swiper -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+
+    <!-- external css -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="hero bg-base-200 min-h-screen ">
+      <div class="hero-content">
+        <div class="card bg-base-100 w-[600px] max-w-sm shadow-2xl">
+
+          <div id="loginSection" class="log in card-body">
+            <h1 class="text-[24px] font-bold text-center">Welcome Back</h1>
+            <fieldset class="fieldset">
+              <label class="label">Email</label>
+              <input id="loginEmail" type="email" class="input" placeholder="Email" />
+              <label class="label">Password</label>
+              <input id="loginPassword" type="password" class="input" placeholder="Password" />
+              
+              <button id="loginBtn" class="btn btn-neutral mt-4">Login</button>
+              <div>
+                <p class="text-center text-sm text-gray-500 mt-2">
+                  Don't have an account?
+                  <span id="gotoSignup" class="text-blue-600 cursor-pointer" onclick="showSignup()"
+                    >Sign up</span
+                  >
+                </p>
+              </div>
+            </fieldset>
+          </div>
+
+
+          <div id="signupSection" class="signup card-body hidden">
+            <h1 class="text-[24px] font-bold text-center">Create Account</h1>
+            <fieldset class="fieldset">
+              <label  class="label">Name</label>
+              <input id="signupName" type="text" class="input" placeholder="Name" />
+              <label  class="label">Email</label>
+              <input  id="signupEmail" type="email" class="input" placeholder="Email" />
+              <label class="label">Password</label>
+              <input id="signupPassword" type="password" class="input" placeholder="Password" />
+              <div><a class="link link-hover">Forgot password?</a></div>
+              <button id="signupBtn" class="btn btn-neutral mt-4">Sign Up</button>
+              <div>
+                <p class="text-center text-sm text-gray-500 mt-2">
+                  Already have an account?
+                  <span id="gotoLogin" class="text-blue-600 cursor-pointer" onclick="showLogin()"
+                    >Login</span
+                  >
+                </p>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="authentication.js"></script>
+    
+  </body>
+</html>
+
+
+<!-- 
+
+  const name = document.getElementById("signupName").value.trim();
+  const email = document.getElementById("signupEmail").value.trim();
+  const password = document.getElementById("signupPassword").value.trim();
+  const address = document.getElementById("signupAddress").value.trim();
+const profileSection = document.getElementById("profileSection");
+const loginSection = document.getElementById("loginSection");
+const signupSection = document.getElementById("signupSection");
+
+const nameEl = document.getElementById("userName");
+const emailEl = document.getElementById("userEmail");
+const addressEl = document.getElementById("userAddress");
+const balanceEl = document.getElementById("balance");
+
+-->

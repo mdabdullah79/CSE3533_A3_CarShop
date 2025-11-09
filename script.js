@@ -1,30 +1,99 @@
 const AllCartData = [];
+// Navbar All Functionality
+//> 1.Navigate
+
+function getHome() {
+  window.location.href = "index.html";
+}
+
+function goInventory() {
+  window.location.href = "inventory.html";
+}
+
+function goReviews() {
+  window.location.href = "reviews.html";
+}
+
+function goContact() {
+  window.location.href = "contact.html";
+}
+
+function goAbout() {
+  window.location.href = "aboutus.html";
+}
+
+function goLogin() {
+  window.location.href = "login.html";
+}
 
 const loadEachCar = () => {
-  fetch("./JSON/carDetaild.json")
+  fetch(
+    "https://raw.githubusercontent.com/abdullah233079/smart-shopdata/refs/heads/main/carDetaild.json"
+  )
     .then((response) => response.json())
     .then((data) => {
-      const Data = data.products;
+      const Data = data.products; // your car data
 
       // Display all cars initially
       displayEachCar(Data);
 
-      // Add search functionality
+      // --- Search functionality ---
       const searchInput = document.getElementById("search-input");
       searchInput.addEventListener("input", (e) => {
         const searchValue = e.target.value.trim().toLowerCase();
-
         const FilterData = searchValue
           ? Data.filter((car) => car.name.toLowerCase().includes(searchValue))
           : Data;
 
         displayEachCar(FilterData);
       });
+
+      // --- Filter functionality ---
+      const filterSelect = document.getElementById("price-filter");
+      filterSelect.addEventListener("change", (e) => {
+        const value = e.target.value;
+        let sortedData = [...Data];
+
+        if (value === "lowToHigh") {
+          sortedData.sort((a, b) => a.price - b.price);
+        } else if (value === "highToLow") {
+          sortedData.sort((a, b) => b.price - a.price);
+        }
+
+        displayEachCar(sortedData);
+      });
     })
     .catch((error) => {
       console.error("Error loading car data:", error);
     });
 };
+
+function setActiveCategory(e) {
+  console.log(e.id);
+  const categories = document.getElementsByClassName("category");
+
+  // Remove active border from all buttons
+  for (const cat of categories) {
+    cat.classList.remove("border-b-3", "border-blue-500", "font-semibold");
+  }
+
+  // Add active border to the clicked one
+  e.classList.add("border-b-3", "border-blue-500", "font-semibold");
+
+  if (e.id == "All") {
+    loadEachCar();
+    return;
+  }
+  fetch(
+    "https://raw.githubusercontent.com/abdullah233079/smart-shopdata/refs/heads/main/carDetaild.json"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      const Cars = data.products;
+      const FilterCar = Cars.filter((car) => car.category == e.id);
+      displayEachCar(FilterCar);
+    });
+}
 
 const displayEachCar = (data) => {
   const CarContainer = document.getElementById("all-vehicle");
@@ -164,14 +233,8 @@ const AddtoCart = (id) => {
         };
         AllCartData.push(CartData);
 
-        let updatecart;
-
-        if (LocalAllCartData) {
-          updatecart = [...LocalAllCartData, CartData];
-        } else {
-          updatecart.push(CartData);
-        }
-        localStorage.setItem("CartData", JSON.stringify(updatecart));
+        LocalAllCartData.push(CartData);
+        localStorage.setItem("CartData", JSON.stringify(LocalAllCartData));
       }
       displayCart();
       updateCartCount();
@@ -188,15 +251,15 @@ const displayCart = () => {
     const Car = document.createElement("div");
     Car.innerHTML = `
             <div
-                class="flex items-center justify-between shadow-md p-3 rounded-lg m-5"
+                class="flex items-center justify-between shadow-md p-3 rounded-lg m-3"
               >
                 <div class="flex items-center gap-3">
                   <div>
-                    <img class="rounded-xl w-50 h-25" src="${car.img}" alt="" />
+                    <img class="rounded-xl w-40 h-20" src="${car.img}" alt="" />
                   </div>
                   <div>
-                    <h2 class="text-[24px] font-bold">${car.name}</h2>
-                    <h2 class="text-[20px]">$ ${car.price}</h2>
+                    <h2 class="text-[18px] font-bold">${car.name}</h2>
+                    <h2 class="text-[16px]">$ ${car.price}</h2>
                   </div>
                 </div>
                 <i class="text-[24px] fa-solid fa-xmark" onclick="handleRemoveCart(${car.id})"></i>
@@ -227,7 +290,7 @@ const handleRemoveCart = (id) => {
 updateCartCount();
 
 const handlePromoCode = () => {
-  const Promocode = document
+  let Promocode = document
     .getElementById("promoCode")
     .value.trim()
     .toUpperCase();
@@ -240,6 +303,9 @@ const handlePromoCode = () => {
     currentSubtotal -= discount;
     document.getElementById("subtotal").innerText = currentSubtotal;
     document.getElementById("discount").innerText = discount.toFixed(2);
+    document.getElementById("apply-coupon").textContent = "Applied";
+    document.getElementById("apply-coupon").disabled = true;
+    Promocode.value = "dfefegg";
   } else {
     alert("Ivalid PromoCode !");
   }
@@ -315,16 +381,112 @@ backToTopBtn.addEventListener("click", () => {
   });
 });
 
-window.addEventListener("scroll", () => {
-  const navbar = document.getElementById("navbar");
+// contact form
+const form = document.getElementById("contactForm");
+const thankYou = document.getElementById("thankYouMessage");
 
-  if (window.scrollY > 680) {
-    // After scrolling 400px
-    navbar.classList.remove("bg-transparent", "text-white");
-    navbar.classList.add("bg-white", "text-black", "shadow-md");
-  } else {
-    // When back to top
-    navbar.classList.add("bg-transparent", "text-white");
-    navbar.classList.remove("bg-white", "text-black", "shadow-md");
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const messageInput = document.getElementById("message");
+
+const nameError = document.getElementById("nameError");
+const emailError = document.getElementById("emailError");
+const messageError = document.getElementById("messageError");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // Reset errors
+  nameError.classList.add("hidden");
+  emailError.classList.add("hidden");
+  messageError.classList.add("hidden");
+
+  let valid = true;
+
+  // Name validation
+  if (nameInput.value.trim().length < 2) {
+    nameError.textContent = "Please enter your name.";
+    nameError.classList.remove("hidden");
+    valid = false;
+  }
+
+  // Email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailInput.value.trim()) {
+    emailError.textContent = "Please enter your email.";
+    emailError.classList.remove("hidden");
+    valid = false;
+  } else if (!emailRegex.test(emailInput.value.trim())) {
+    emailError.textContent = "Please enter a valid email address.";
+    emailError.classList.remove("hidden");
+    valid = false;
+  }
+
+  // Message validation
+  if (messageInput.value.trim().length < 10) {
+    messageError.textContent = "Message must be at least 10 characters long.";
+    messageError.classList.remove("hidden");
+    valid = false;
+  }
+
+  // Show thank-you message
+  if (valid) {
+    form.classList.add("hidden");
+    thankYou.classList.remove("hidden");
+    form.reset();
   }
 });
+
+const getUsers = () => JSON.parse(localStorage.getItem("customers")) || [];
+const getActiveUser = () => JSON.parse(localStorage.getItem("activeUser"));
+const clearActiveUser = () => localStorage.removeItem("activeUser");
+const saveUsers = (users) =>
+  localStorage.setItem("customers", JSON.stringify(users));
+const setActiveUser = (user) =>
+  localStorage.setItem("activeUser", JSON.stringify(user));
+
+const clearCart = () => localStorage.removeItem("CartData");
+
+const ProfileCart = document.getElementById("profilecart");
+const HomeLogin = document.getElementById("homeLogin");
+
+let activeUser = getActiveUser();
+const nameEl = document.getElementById("userName");
+const emailEl = document.getElementById("userEmail");
+const balanceEl = document.getElementById("balance");
+function showProfile() {
+  nameEl.textContent = activeUser.name;
+  emailEl.textContent = activeUser.email;
+  addressEl.textContent = activeUser.address;
+  balanceEl.textContent = `$${activeUser.balance.toLocaleString()}`;
+}
+
+// Add Balance
+const addBalanceBtn = document.getElementById("addBalanceBtn");
+addBalanceBtn.addEventListener("click", () => {
+  const users = getUsers();
+  const index = users.findIndex((u) => u.email === activeUser.email);
+  users[index].balance += 10000;
+  activeUser.balance = users[index].balance;
+  saveUsers(users);
+  setActiveUser(activeUser);
+  balanceEl.textContent = `$${activeUser.balance.toLocaleString()}`;
+  alert("✅ $10,000 added successfully!");
+});
+
+// LogOut
+const logoutBtn = document.getElementById("logoutBtn");
+logoutBtn.addEventListener("click", () => {
+  clearActiveUser();
+  clearCart();
+  activeUser = null;
+  location.reload();
+  alert("You have logged out!");
+});
+
+if (getActiveUser()) {
+  ProfileCart.classList.remove("hidden");
+  ProfileCart.classList.add("flex");
+  HomeLogin.classList.add("hidden");
+  showProfile();
+}

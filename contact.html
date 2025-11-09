@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- dsaisyui -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- swiper -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+
+    <!-- external css -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="dm-sans-font">
+    <header>
+      <!-- NavBar -->
+      <div
+        id="navbar"
+        class="navbar px-4 bg-white text-black fixed top-0 w-full shadow-sm transition-colors duration-500 ease-in-out z-50"
+      >
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabindex="-1"
+              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            ></ul>
+          </div>
+          <img
+            class="w-12 mr-2"
+            src="./assets/smartcar-high-resolution-logo-transparent.png"
+            alt=""
+          />
+          <h1 class="text-[24px]"><span class="font-bold">CaR</span> Shop</h1>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1">
+            <li id="home" class="navbtn" onclick="getHome()"><a>Home</a></li>
+            <li id="inventory" class="navbtn" onclick="goInventory()">
+              <a>Inventory</a>
+            </li>
+            <li id="reviews" class="navbtn" onclick="goReviews()">
+              <a>Reviews</a>
+            </li>
+            <li id="contact" class="navbtn" onclick="goContact()">
+              <a>Contact</a>
+            </li>
+            <li id="about" class="navbtn" onclick="goAbout()">
+              <a>About Us</a>
+            </li>
+          </ul>
+        </div>
+        <div class="navbar-end gap-2">
+          <i
+            class="fa-solid fa-user text-[20px]"
+            onclick="profilemodal.showModal()"
+          ></i>
+          <div
+            class="flex items-center justify-center gap-2 border-l p-2"
+            onclick="cartmodal.showModal(),displayCart()"
+          >
+            <span id="cart-count" class="font-bold text-[16px]">0</span>
+            <i class="fa-solid fa-cart-shopping text-[20px]"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Contact Section -->
+      <!-- Hero Section -->
+      <section
+        class="relative bg-cover bg-center h-[60vh]"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c');
+        "
+      >
+        <div
+          class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-center text-white px-4"
+        >
+          <h1 class="text-5xl font-extrabold mb-4">Get in Touch</h1>
+          <p class="text-lg max-w-xl">
+            Whether you're looking for your dream car or need assistance, we’re
+            here to help you every step of the way.
+          </p>
+        </div>
+      </section>
+
+      <!-- Contact Info & Form -->
+      <section class="py-16 px-6 md:px-20">
+        <div class="items-start">
+          <!-- Left: Contact Info -->
+          <div>
+            <h2 class="text-4xl font-bold mb-6">Contact Information</h2>
+            <p class="text-gray-700 mb-8">
+              Have a question, feedback, or need support? Reach out to us using
+              the details below or fill out our contact form.
+            </p>
+
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <div class="text-blue-600 text-2xl">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-lg">Our Location</h3>
+                  <p class="text-gray-600">
+                    Smart Car Shop, Dhanmondi, Dhaka, Bangladesh
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="text-blue-600 text-2xl">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-lg">Phone Number</h3>
+                  <p class="text-gray-600">+880 1234-567890</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="text-blue-600 text-2xl">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-lg">Email Address</h3>
+                  <p class="text-gray-600">support@smartcarshop.com</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="text-blue-600 text-2xl">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-lg">Business Hours</h3>
+                  <p class="text-gray-600">Sat–Thu: 9:00 AM – 8:00 PM</p>
+                  <p class="text-gray-600">Friday: Closed</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section
+        class="w-11/12 mx-auto my-16 bg-white rounded-2xl shadow-lg overflow-hidden"
+      >
+        <div class="md:flex">
+          <!-- Left Side: Image + Catchy Text -->
+          <div
+            class="md:w-1/2 relative bg-black text-white flex flex-col justify-center items-center p-8"
+          >
+            <img
+              src="/assets/heroimg1.jpg"
+              alt="Luxury car"
+              class="absolute inset-0 w-full h-full object-cover opacity-40"
+            />
+            <div class="relative z-10 text-center">
+              <h2 class="text-3xl font-bold mb-3">Let’s Drive Your Dream</h2>
+              <p class="text-lg opacity-90">
+                We are ready to help you hit the road in style!
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Side: Contact Form -->
+          <div class="md:w-1/2 p-8">
+            <form id="contactForm" class="space-y-4">
+              <div>
+                <label
+                  for="name"
+                  class="block text-sm font-medium text-gray-600"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="mt-1 w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Enter your name"
+                />
+                <p id="nameError" class="text-red-600 text-sm mt-1 hidden"></p>
+              </div>
+
+              <div>
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-gray-600"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="mt-1 w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Enter your email"
+                />
+                <p id="emailError" class="text-red-600 text-sm mt-1 hidden"></p>
+              </div>
+
+              <div>
+                <label
+                  for="message"
+                  class="block text-sm font-medium text-gray-600"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  class="mt-1 w-full border border-gray-300 rounded-lg p-2 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Type your message here..."
+                ></textarea>
+                <p
+                  id="messageError"
+                  class="text-red-600 text-sm mt-1 hidden"
+                ></p>
+              </div>
+
+              <button
+                type="submit"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg w-full transition duration-200"
+              >
+                Send Message
+              </button>
+            </form>
+
+            <!-- Thank You Message -->
+            <div id="thankYouMessage" class="hidden text-center py-8">
+              <h3 class="text-2xl font-semibold text-blue-700">
+                Thank You! 🎉
+              </h3>
+              <p class="text-gray-600 mt-2">
+                Your message has been received. We’ll get back to you soon!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 4. Shopping Cart System Modal -->
+    <dialog id="cartmodal" class="modal">
+      <div class="modal-box">
+        <div class="">
+          <!-- Header -->
+          <div class="flex justify-between items-center border-b pb-3">
+            <h2 class="text-xl font-semibold">Your Cart</h2>
+            <button
+              id="clear-all"
+              class="text-orange-500 hover:text-orange-600 text-sm font-medium"
+            >
+              Clear All
+            </button>
+          </div>
+
+          <div class="mt-4 min-h-[150px] items-container text-gray-700">
+            <h1 class="text-[24px]">ITEMS</h1>
+            <div id="cart-cotainer" class="">
+              <div
+                class="flex items-center justify-between shadow-md p-3 rounded-lg m-5"
+              >
+                <div class="flex items-center gap-3">
+                  <div>
+                    <img class="w-40 h-20" src="assets/car/car3.avif" alt="" />
+                  </div>
+                  <div>
+                    <h2 class="text-[24px] font-bold">Tesla Midel 3</h2>
+                    <h2 class="text-[20px]">$35000 x 1</h2>
+                  </div>
+                </div>
+                <i class="text-[24px] fa-solid fa-xmark"></i>
+              </div>
+            </div>
+          </div>
+          <div class="border-t mt-6 pt-4">
+            <h3 class="text-lg font-semibold mb-3">Order Summary</h3>
+
+            <!-- Coupon Row -->
+            <div class="flex gap-2 mb-4 relative">
+              <input
+                id="promoCode"
+                type="text"
+                placeholder="Apply Coupon"
+                class="w-full border rounded-full px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-orange-400"
+              />
+              <button
+                onclick="handlePromoCode()"
+                id="apply-coupon"
+                class="bg-black absolute right-1 top-1 text-white text-sm rounded-full px-4 py-2 font-medium hover:bg-gray-800"
+              >
+                Apply Coupon
+              </button>
+            </div>
+
+            <!-- Totals -->
+            <div class="flex justify-between text-sm text-gray-600 mb-2">
+              <span>Sub Total ( items )</span>
+              <span>৳ <span id="subtotal">0.00</span></span>
+            </div>
+            <div class="flex justify-between text-sm text-gray-600 mb-2">
+              <span>Discount</span>
+              <span>৳ <span id="discount">0.00</span></span>
+            </div>
+
+            <hr class="my-3" />
+
+            <div class="flex justify-between font-semibold text-base">
+              <span>Total Amount</span>
+              <span>৳ <span id="total">0.00</span></span>
+            </div>
+
+            <!-- Continue Button -->
+            <button
+              id="continue-btn"
+              class="w-full bg-orange-500 hover:bg-orange-600 text-white rounded-full py-3 mt-5 font-medium transition duration-200"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button, it will close the modal -->
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Profile Modal -->
+    <dialog id="profilemodal" class="modal">
+      <div class="modal-box w-11/12 max-w-md">
+        <!-- Profile Section -->
+        <div id="profileSection" class="hidden">
+          <div class="flex items-center gap-4 mb-4">
+            <img
+              src="./avatar.png"
+              alt="Avatar"
+              class="w-16 h-16 rounded-full border-4 border-blue-200"
+            />
+            <div>
+              <h2 id="userName" class="text-xl font-semibold"></h2>
+              <p id="userEmail" class="text-gray-600"></p>
+              <p id="userAddress" class="text-gray-600"></p>
+            </div>
+          </div>
+          <!-- User Balance System -->
+          <div
+            class="bg-blue-50 p-4 rounded-lg flex justify-between items-center mb-4"
+          >
+            <div>
+              <p class="text-gray-500">Available Balance</p>
+              <h3 id="balance" class="text-2xl font-bold text-blue-700">
+                $10000
+              </h3>
+            </div>
+            <button
+              id="addBalanceBtn"
+              class="bg-blue-600 text-white rounded-lg px-3 py-2 hover:bg-blue-700"
+            >
+              + Add $10,000
+            </button>
+          </div>
+
+          <button
+            id="logoutBtn"
+            class="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600"
+          >
+            Logout
+          </button>
+        </div>
+
+        <!-- Login Section -->
+        <div id="loginSection" class="hidden">
+          <h2 class="text-2xl font-semibold text-center mb-3">Login</h2>
+          <input
+            id="loginEmail"
+            type="email"
+            placeholder="Email"
+            class="w-full border rounded-lg p-2 mb-2"
+          />
+          <input
+            id="loginPassword"
+            type="password"
+            placeholder="Password"
+            class="w-full border rounded-lg p-2 mb-4"
+          />
+          <button
+            id="loginBtn"
+            class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+          >
+            Login
+          </button>
+          <p class="text-center text-sm text-gray-500 mt-2">
+            Don't have an account?
+            <span id="gotoSignup" class="text-blue-600 cursor-pointer"
+              >Sign up</span
+            >
+          </p>
+        </div>
+
+        <!-- Signup Section -->
+        <div id="signupSection" class="hidden">
+          <h2 class="text-2xl font-semibold text-center mb-3">Sign Up</h2>
+          <input
+            id="signupName"
+            type="text"
+            placeholder="Full Name"
+            class="w-full border rounded-lg p-2 mb-2"
+          />
+          <input
+            id="signupEmail"
+            type="email"
+            placeholder="Email"
+            class="w-full border rounded-lg p-2 mb-2"
+          />
+          <input
+            id="signupPassword"
+            type="password"
+            placeholder="Password"
+            class="w-full border rounded-lg p-2 mb-2"
+          />
+          <input
+            id="signupAddress"
+            type="text"
+            placeholder="Address"
+            class="w-full border rounded-lg p-2 mb-4"
+          />
+          <button
+            id="signupBtn"
+            class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700"
+          >
+            Create Account
+          </button>
+          <p class="text-center text-sm text-gray-500 mt-2">
+            Already have an account?
+            <span id="gotoLogin" class="text-blue-600 cursor-pointer"
+              >Login</span
+            >
+          </p>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Back to Top Button -->
+    <button
+      id="backToTop"
+      class="hidden fixed bottom-6 right-6 bg-blue-600 text-white text-lg p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300"
+    >
+      ↑
+    </button>
+
+    <footer
+      class="footer sm:footer-horizontal bg-base-200 text-base-content p-10"
+    >
+      <nav>
+        <h6 class="footer-title">Services</h6>
+        <a class="link link-hover">Branding</a>
+        <a class="link link-hover">Design</a>
+        <a class="link link-hover">Marketing</a>
+        <a class="link link-hover">Advertisement</a>
+      </nav>
+      <nav>
+        <h6 class="footer-title">Company</h6>
+        <a class="link link-hover">About us</a>
+        <a class="link link-hover">Contact</a>
+        <a class="link link-hover">Jobs</a>
+        <a class="link link-hover">Press kit</a>
+      </nav>
+      <nav>
+        <h6 class="footer-title">Legal</h6>
+        <a class="link link-hover">Terms of use</a>
+        <a class="link link-hover">Privacy policy</a>
+        <a class="link link-hover">Cookie policy</a>
+      </nav>
+      <form>
+        <h6 class="footer-title">Newsletter</h6>
+        <fieldset class="w-80">
+          <label>Enter your email address</label>
+          <div class="join">
+            <input
+              type="text"
+              placeholder="username@site.com"
+              class="input input-bordered join-item"
+            />
+            <button class="btn btn-primary join-item">Subscribe</button>
+          </div>
+        </fieldset>
+      </form>
+    </footer>
+    <script src="./highlight.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

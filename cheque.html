@@ -1,0 +1,140 @@
+<div class="modal-box w-11/12 max-w-md">
+  <!-- Profile Section -->
+  <div id="profileSection" class="hidden">
+    <div class="flex items-center gap-4 mb-4">
+      <img
+        src="./avatar.png"
+        alt="Avatar"
+        class="w-16 h-16 rounded-full border-4 border-blue-200"
+      />
+      <div>
+        <h2 id="userName" class="text-xl font-semibold"></h2>
+        <p id="userEmail" class="text-gray-600"></p>
+        <p id="userAddress" class="text-gray-600"></p>
+      </div>
+    </div>
+    <!-- User Balance System -->
+    <div
+      class="bg-blue-50 p-4 rounded-lg flex justify-between items-center mb-4"
+    >
+      <div>
+        <p class="text-gray-500">Available Balance</p>
+        <h3 id="balance" class="text-2xl font-bold text-blue-700">$10000</h3>
+      </div>
+      <button
+        id="addBalanceBtn"
+        class="bg-blue-600 text-white rounded-lg px-3 py-2 hover:bg-blue-700"
+      >
+        + Add $10,000
+      </button>
+    </div>
+
+    <button
+      id="logoutBtn"
+      class="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600"
+    >
+      Logout
+    </button>
+  </div>
+
+
+
+  <!-- Modal Footer -->
+  <div class="modal-action">
+    <form method="dialog">
+      <button class="btn">Close</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+<!-- profile -->
+ // > 2. Profile
+
+//Authentication
+
+const profileSection = document.getElementById("profileSection");
+
+
+
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+
+const gotoSignup = document.getElementById("gotoSignup");
+const gotoLogin = document.getElementById("gotoLogin");
+
+
+
+function showProfile() {
+  loginSection.classList.add("hidden");
+  signupSection.classList.add("hidden");
+  profileSection.classList.remove("hidden");
+
+  nameEl.textContent = activeUser.name;
+  emailEl.textContent = activeUser.email;
+  addressEl.textContent = activeUser.address;
+  balanceEl.textContent = `$${activeUser.balance.toLocaleString()}`;
+}
+
+function showLogin() {
+  signupSection.classList.add("hidden");
+  profileSection.classList.add("hidden");
+  loginSection.classList.remove("hidden");
+}
+
+function showSignup() {
+  loginSection.classList.add("hidden");
+  profileSection.classList.add("hidden");
+  signupSection.classList.remove("hidden");
+}
+
+
+
+// Login
+loginBtn.addEventListener("click", () => {
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value.trim();
+  const users = getUsers();
+
+  const foundUser = users.find(
+    (u) => u.email === email && u.password === password
+  );
+  if (!foundUser) {
+    alert("Invalid email or password!");
+    return;
+  }
+
+  setActiveUser(foundUser);
+  activeUser = foundUser;
+  showProfile();
+  alert(`Welcome back, ${foundUser.name}!`);
+});
+
+// Add Balance
+addBalanceBtn.addEventListener("click", () => {
+  const users = getUsers();
+  const index = users.findIndex((u) => u.email === activeUser.email);
+  users[index].balance += 10000;
+  activeUser.balance = users[index].balance;
+  saveUsers(users);
+  setActiveUser(activeUser);
+  balanceEl.textContent = `$${activeUser.balance.toLocaleString()}`;
+  alert("✅ $10,000 added successfully!");
+});
+
+
+
+// Switch forms
+gotoSignup.addEventListener("click", showSignup);
+gotoLogin.addEventListener("click", showLogin);
+
+// When modal opens or page loads
+let activeUser = getActiveUser();
+if (activeUser){
+    ProfileCart.classList.remove("hidden");
+
+}
+else showLogin();
