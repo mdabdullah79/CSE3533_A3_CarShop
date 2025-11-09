@@ -355,6 +355,9 @@ const handlePromoCode = () => {
   }
 };
 
+
+
+
 const updateCartCount = () => {
   const LocalAllCartData = JSON.parse(localStorage.getItem("CartData")) || [];
   document.getElementById("cart-count").innerText = LocalAllCartData.length;
@@ -472,7 +475,7 @@ form.addEventListener("submit", (e) => {
 
 
 
-
+// Profile 
 const nameEl = document.getElementById("userName");
 const emailEl = document.getElementById("userEmail");
 const balanceEl = document.getElementById("balance");
@@ -495,6 +498,8 @@ addBalanceBtn.addEventListener("click", () => {
   balanceEl.textContent = `$${activeUser.balance.toLocaleString()}`;
   alert("✅ $10,000 added successfully!");
 });
+
+
 
 // LogOut
 const logoutBtn = document.getElementById("logoutBtn");
