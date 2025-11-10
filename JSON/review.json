@@ -4,83 +4,83 @@
   "reviews": [
     {
       "id": 1,
-      "customer_name": "Arif Hossain",
-      "comment": "Excellent service!",
-      "description": "Bought my Toyota Corolla from here — smooth transaction and great support team. Highly recommended!",
+      "customer_name": "Arafat Hossain",
+      "comment": "Amazing experience!",
+      "description": "Purchased my Honda Civic from this showroom — the staff was professional, paperwork was smooth, and delivery was on time.",
       "star": 5,
-      "date": "2025-10-12"
+      "date": "2025-10-25"
     },
     {
       "id": 2,
-      "customer_name": "Nusrat Jahan",
+      "customer_name": "Nusrat Chowdhury",
       "comment": "Very satisfied",
-      "description": "The laptop I purchased arrived on time and in perfect condition. Packaging was impressive too.",
+      "description": "Bought a Toyota Axio last month. The car is in great condition, and they offered a fair price. Highly recommended!",
       "star": 5,
-      "date": "2025-10-10"
+      "date": "2025-10-20"
     },
     {
       "id": 3,
-      "customer_name": "Rakib Hasan",
-      "comment": "Good, but room for improvement",
-      "description": "Product quality is good, but customer support took some time to respond to my query.",
+      "customer_name": "Rakibul Islam",
+      "comment": "Good service overall",
+      "description": "Nice collection of reconditioned cars. However, the loan approval process took a bit longer than expected.",
       "star": 4,
-      "date": "2025-10-08"
+      "date": "2025-10-18"
     },
     {
       "id": 4,
-      "customer_name": "Mithila Akter",
+      "customer_name": "Mitu Rahman",
       "comment": "Value for money",
-      "description": "Got a smartwatch at a very reasonable price. Works well and looks premium.",
+      "description": "Bought a used Toyota Premio — very clean interior and well-maintained. Totally worth the price.",
       "star": 4,
-      "date": "2025-10-07"
+      "date": "2025-10-15"
     },
     {
       "id": 5,
-      "customer_name": "Sajid Ahmed",
-      "comment": "Highly recommended!",
-      "description": "Fast delivery, friendly staff, and authentic products. One of the best online stores in Bangladesh.",
+      "customer_name": "Sajid Khan",
+      "comment": "Excellent staff and service!",
+      "description": "The team helped me choose the perfect car within my budget. Transparent pricing and honest advice.",
       "star": 5,
-      "date": "2025-10-05"
+      "date": "2025-10-13"
     },
     {
       "id": 6,
-      "customer_name": "Tania Rahman",
+      "customer_name": "Tania Akter",
       "comment": "Average experience",
-      "description": "Received the product 2 days late, but it was in good condition. Overall okay experience.",
+      "description": "Car delivery was delayed by a day, but the condition was exactly as described. Communication could be better.",
       "star": 3,
-      "date": "2025-10-04"
+      "date": "2025-10-10"
     },
     {
       "id": 7,
-      "customer_name": "Imran Khan",
-      "comment": "Outstanding quality",
-      "description": "Purchased a Smart TV — picture quality and sound are top-notch! Worth every penny.",
+      "customer_name": "Imran Mahmud",
+      "comment": "Top-notch cars!",
+      "description": "Bought a Nissan X-Trail — runs perfectly! The detailing and inspection process were very professional.",
       "star": 5,
-      "date": "2025-10-02"
+      "date": "2025-10-07"
     },
     {
       "id": 8,
-      "customer_name": "Shakil Chowdhury",
-      "comment": "Decent products",
-      "description": "Headphones are good, but the packaging could be improved. Still happy with the purchase.",
+      "customer_name": "Shakil Ahmed",
+      "comment": "Decent experience",
+      "description": "Test drive was smooth, and the staff was polite. Could improve parking and waiting area for customers.",
       "star": 4,
-      "date": "2025-10-01"
+      "date": "2025-10-05"
     },
     {
       "id": 9,
-      "customer_name": "Farhana Islam",
-      "comment": "Great experience",
-      "description": "Ordered a gaming console — smooth purchase process and fast delivery. Great job!",
+      "customer_name": "Farhana Sultana",
+      "comment": "Highly recommended!",
+      "description": "Purchased a hybrid car — they explained all the details clearly. Very trustworthy dealership.",
       "star": 5,
-      "date": "2025-09-30"
+      "date": "2025-10-03"
     },
     {
       "id": 10,
-      "customer_name": "Tanvir Ahmed",
-      "comment": "Not bad",
-      "description": "The camera I received was fine, but the instruction manual was missing. Still works perfectly.",
+      "customer_name": "Tanvir Rahman",
+      "comment": "Good but can improve",
+      "description": "The car is in good shape, but the paperwork took longer than I expected. Overall a good experience though.",
       "star": 4,
-      "date": "2025-09-28"
+      "date": "2025-10-01"
     }
   ]
 }

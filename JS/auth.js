@@ -40,7 +40,7 @@ signupBtn.addEventListener("click", () => {
     return;
   }
 
-  const newUser = { name, email, password, balance: 10000 };
+  const newUser = { name, email, password, balance: 100000 };
   users.push(newUser);
   saveUsers(users);
   setActiveUser(newUser);

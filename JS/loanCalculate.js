@@ -46,3 +46,7 @@ document.querySelector(".btn-primary").addEventListener("click", (e) => {
   e.preventDefault();
   calculateLoan();
 });
+
+
+
+

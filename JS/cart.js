@@ -38,11 +38,11 @@ const AddtoCart = (id) => {
     });
 };
 
-document.getElementById('clear-all').addEventListener('click',()=>{
+document.getElementById("clear-all").addEventListener("click", () => {
   clearCart();
   displayCart();
   updateCartCount();
-})
+});
 
 const displayCart = () => {
   const CartConatainer = document.getElementById("cart-cotainer");
@@ -69,14 +69,18 @@ const displayCart = () => {
     CartConatainer.appendChild(Car);
   }
   let discount = parseInt(document.getElementById("discount").innerText) || 0;
-  let currentSubtotal = parseInt(document.getElementById("subtotal").innerText) || 0;
+  let currentSubtotal =
+    parseInt(document.getElementById("subtotal").innerText) || 0;
   currentSubtotal = +subtotal;
   document.getElementById("subtotal").innerText = currentSubtotal;
   document.getElementById("total").innerText = currentSubtotal - discount;
 };
 
 const handlePromoCode = () => {
-  let Promocode = document.getElementById("promoCode").value.trim().toUpperCase();
+  let Promocode = document
+    .getElementById("promoCode")
+    .value.trim()
+    .toUpperCase();
   let currentTotal = parseInt(document.getElementById("total").innerText) || 0;
   if (Promocode === "SMART20") {
     const discount = currentTotal * 0.2;
@@ -103,3 +107,34 @@ const handleRemoveCart = (id) => {
   updateCartCount();
 };
 updateCartCount();
+
+// Add this function near other cart logic in cart.js
+const handlePlaceOrder = () => {
+  const Total = parseFloat(document.getElementById("total").innerText).toFixed(
+    2
+  );
+  const UserBalance = parseFloat(activeUser.balance).toFixed(2);
+
+  if (Total <= UserBalance) {
+    const users = getUsers();
+    const index = users.findIndex((u) => u.email === activeUser.email);
+    users[index].balance -= Total;
+    activeUser.balance = users[index].balance;
+    saveUsers(users);
+    setActiveUser(activeUser);
+    balanceEl.textContent = `$${activeUser.balance.toLocaleString()}`;
+    alert("Order placed");
+    // Optionally clear cart here:
+    clearCart();
+    displayCart();
+    updateCartCount();
+    window.location.reload();
+  } else {
+    alert(`Insufficient balance, ${activeUser.balance}`);
+  }
+};
+
+// Attach event listener for the order button
+document
+  .getElementById("placeOrderBtn")
+  .addEventListener("click", handlePlaceOrder);
