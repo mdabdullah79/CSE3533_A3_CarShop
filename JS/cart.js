@@ -1,42 +1,7 @@
 // ==== cart.js ====
 const AllCartData = [];
 
-const AddtoCart = (id) => {
-  if (!activeUser) {
-    alert("login please");
-    return;
-  }
-  const LocalAllCartData = JSON.parse(localStorage.getItem("CartData")) || [];
-  fetch("./JSON/carDetaild.json")
-    .then((response) => response.json())
-    .then((data) => {
-      const Data = data.products;
-      const SelectCar = Data[id - 1];
-      const found = AllCartData.find((e) => e.id === SelectCar.id);
-      const isDuplicate = LocalAllCartData.find((car) => car.id === id);
-      if (isDuplicate) {
-        alert(`${isDuplicate.name} Already in Cart!`);
-        return;
-      }
-      alert(`${SelectCar.name} Sucessfully Added to the cart`);
-      if (found) {
-        found.quantity++;
-      } else {
-        const CartData = {
-          id: id,
-          img: SelectCar.image,
-          name: SelectCar.name,
-          price: SelectCar.price_usd,
-          quantity: 1,
-        };
-        AllCartData.push(CartData);
-        LocalAllCartData.push(CartData);
-        localStorage.setItem("CartData", JSON.stringify(LocalAllCartData));
-      }
-      displayCart();
-      updateCartCount();
-    });
-};
+
 
 document.getElementById("clear-all").addEventListener("click", () => {
   clearCart();
@@ -76,6 +41,41 @@ const displayCart = () => {
   document.getElementById("total").innerText = currentSubtotal - discount;
 };
 
+
+const AddtoCart = (id) => {
+  if (!activeUser) {
+    alert("login please");
+    return;
+  }
+  const LocalAllCartData = JSON.parse(localStorage.getItem("CartData")) || [];
+  fetch("./JSON/carDetaild.json")
+    .then((response) => response.json())
+    .then((data) => {
+      const Data = data.products;
+      const SelectCar = Data[id - 1];
+      const found = AllCartData.find((e) => e.id === SelectCar.id);
+      const isDuplicate = LocalAllCartData.find((car) => car.id === id);
+      if (isDuplicate) {
+        alert(`${isDuplicate.name} Already in Cart!`);
+        return;
+      }else {
+        const CartData = {
+          id: id,
+          img: SelectCar.image,
+          name: SelectCar.name,
+          price: SelectCar.price_usd,
+          quantity: 1,
+        };
+        AllCartData.push(CartData);
+        LocalAllCartData.push(CartData);
+        localStorage.setItem("CartData", JSON.stringify(LocalAllCartData));
+        alert(`${SelectCar.name} Sucessfully Added to the cart`);
+      }
+      displayCart();
+      updateCartCount();
+    });
+};
+
 const handlePromoCode = () => {
   let Promocode = document
     .getElementById("promoCode")
@@ -110,31 +110,33 @@ updateCartCount();
 
 // Add this function near other cart logic in cart.js
 const handlePlaceOrder = () => {
-  const Total = parseFloat(document.getElementById("total").innerText).toFixed(
-    2
-  );
-  const UserBalance = parseFloat(activeUser.balance).toFixed(2);
+  const Total = parseFloat(document.getElementById("total").textContent);
+  const UserBalance = parseFloat(activeUser.balance);
 
-  if (Total <= UserBalance) {
+  if (UserBalance >= Total) {
     const users = getUsers();
     const index = users.findIndex((u) => u.email === activeUser.email);
+
     users[index].balance -= Total;
     activeUser.balance = users[index].balance;
+
     saveUsers(users);
     setActiveUser(activeUser);
-    balanceEl.textContent = `$${activeUser.balance.toLocaleString()}`;
+
+    balanceEl.textContent = `$${activeUser.balance.toFixed(2)}`;
+
     alert("Order placed");
-    // Optionally clear cart here:
+
     clearCart();
     displayCart();
     updateCartCount();
-    window.location.reload();
+    // window.location.reload(); // optional
   } else {
-    alert(`Insufficient balance, ${activeUser.balance}`);
+    alert(`Insufficient balance, $${activeUser.balance.toFixed(2)}`);
   }
 };
 
-// Attach event listener for the order button
 document
   .getElementById("placeOrderBtn")
   .addEventListener("click", handlePlaceOrder);
+

@@ -104,7 +104,7 @@
     },
     {
       "id": 10,
-      "image": "../assets/car/car.jpg",
+      "image": "../assets/car/car10.webp",
       "name": "Yamaha R15 V4",
       "description": "Stylish sports bike featuring aerodynamic design and powerful engine.",
       "category": "Bike",
@@ -115,7 +115,7 @@
     },
     {
       "id": 11,
-      "image": "../assets/car/car.jpg",
+      "image": "../assets/car/car11.avif",
       "name": "Honda CBR 150R",
       "description": "High-performance bike with smooth handling and a striking design.",
       "category": "Bike",
@@ -137,7 +137,7 @@
     },
     {
       "id": 13,
-      "image": "../assets/car/car.jpg",
+      "image": "../assets/car/car13.jpg",
       "name": "Ford Ranger",
       "description": "Strong pickup truck with turbo diesel engine and advanced 4x4 capabilities.",
       "category": "Truck",
@@ -148,7 +148,7 @@
     },
     {
       "id": 14,
-      "image": "../assets/car/car.jpg",
+      "image": "../assets/car/car14.webp",
       "name": "Toyota Hilux",
       "description": "Reliable pickup with great off-road power and utility features.",
       "category": "Truck",
@@ -203,7 +203,7 @@
     },
     {
       "id": 19,
-      "image": "https://i.ibb.co.com/hBX2k8F/car-battery.jpg",
+      "image": "../assets/car/battery.jpg",
       "name": "Amaron Car Battery",
       "description": "Long-lasting and reliable car battery compatible with most models.",
       "category": "Accessories",
@@ -214,7 +214,7 @@
     },
     {
       "id": 20,
-      "image": "https://i.ibb.co.com/TYbTXMp/car-cover.jpg",
+      "image": "../assets/car/carcover.jpg",
       "name": "Waterproof Car Cover",
       "description": "Protective car cover designed to resist dust, rain, and sunlight.",
       "category": "Accessories",

@@ -1,6 +1,6 @@
 // ==== products.js ====
 const loadEachCar = () => {
-  fetch("https://raw.githubusercontent.com/abdullah233079/smart-shopdata/refs/heads/main/carDetaild.json")
+  fetch("../JSON/carDetaild.json")
     .then((response) => response.json())
     .then((data) => {
       const Data = data.products;
@@ -42,7 +42,7 @@ function setActiveCategory(e) {
     loadEachCar();
     return;
   }
-  fetch("https://raw.githubusercontent.com/abdullah233079/smart-shopdata/refs/heads/main/carDetaild.json")
+  fetch("../JSON/carDetaild.json")
     .then((response) => response.json())
     .then((data) => {
       const Cars = data.products;
