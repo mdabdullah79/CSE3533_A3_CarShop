@@ -393,26 +393,7 @@ const heroSwiper = new Swiper(".hero-swiper", {
   },
 });
 
-// backToTop
-const backToTopBtn = document.getElementById("backToTop");
-// Show or hide button on scroll
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    backToTopBtn.classList.remove("hidden");
-    backToTopBtn.classList.add("flex"); // make it visible
-  } else {
-    backToTopBtn.classList.add("hidden");
-    backToTopBtn.classList.remove("flex");
-  }
-});
 
-// Scroll smoothly to top
-backToTopBtn.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-});
 
 
 // contact form

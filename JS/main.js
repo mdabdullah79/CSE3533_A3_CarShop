@@ -21,10 +21,43 @@ const activeId = pageMap[currentPage];
 if (activeId) {
   const activeElement = document.getElementById(activeId);
   if (activeElement) {
-    activeElement.classList.add("active");
+    activeElement.classList.add("bg-black", "rounded-sm","text-white","font-bold");
   }
 }
 
+const heroSwiper = new Swiper(".hero-swiper", {
+  loop: true,
+  speed: 800,
+  effect: "slide",
+  fadeEffect: { crossFade: true },
+  autoplay: {
+    delay: 4000,
+    disableOnInteraction: false,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+    clickable: true,
+  },
+});
+
+
+// main.js
+const backToTopBtn = document.getElementById("backToTop");
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTopBtn.classList.remove("hidden");
+    backToTopBtn.classList.add("flex");
+  } else {
+    backToTopBtn.classList.add("hidden");
+    backToTopBtn.classList.remove("flex");
+  }
+});
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0, behavior: "smooth",
+  });
+});
 
 
 
@@ -58,18 +91,3 @@ if (getActiveUser()) {
 
 
 
-const heroSwiper = new Swiper(".hero-swiper", {
-  loop: true,
-  speed: 800,
-  effect: "slide",
-  fadeEffect: { crossFade: true },
-  autoplay: {
-    delay: 4000,
-    disableOnInteraction: false,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-    clickable: true,
-  },
-});
