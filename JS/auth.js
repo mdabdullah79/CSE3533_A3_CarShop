@@ -28,6 +28,13 @@ signupBtn.addEventListener("click", () => {
   const name = document.getElementById("signupName").value.trim();
   const email = document.getElementById("signupEmail").value.trim();
   const password = document.getElementById("signupPassword").value.trim();
+  
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    document.getElementById("emalerror").classList.remove("hidden");
+    return;
+  }
+
 
   if (!name || !email || !password) {
     alert("Please fill all fields!");
@@ -40,13 +47,14 @@ signupBtn.addEventListener("click", () => {
     return;
   }
 
-  const newUser = { name, email, password, balance: 10000 };
+  const newUser = { name, email, password, balance: 100000 };
   users.push(newUser);
   saveUsers(users);
   setActiveUser(newUser);
   activeUser = newUser;
 //   showProfile();
   alert("🎉 Account created successfully!");
+  window.location.href='index.html';
 
 });
 
