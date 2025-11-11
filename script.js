@@ -482,15 +482,7 @@ addBalanceBtn.addEventListener("click", () => {
 
 
 
-// LogOut
-const logoutBtn = document.getElementById("logoutBtn");
-logoutBtn.addEventListener("click", () => {
-  clearActiveUser();
-  clearCart();
-  activeUser = null;
-  location.reload();
-  alert("You have logged out!");
-});
+
 
 const ProfileCart = document.getElementById("profilecart");
 const HomeLogin = document.getElementById("homeLogin");
