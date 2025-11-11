@@ -264,6 +264,102 @@
           class="grid grid-cols-1 md:grid-cols-4 gap-4"
         ></div>
       </section>
+
+      <!-- Calculator -->
+      <section class="p-5 w-11/12 mx-auto">
+        <div
+          class="flex flex-col lg:flex-row items-center justify-between bg-[#050B20] rounded-lg"
+        >
+          <div class="flex-1 rounded-md">
+            <img
+              class="container w-full md:h-[500px] md:rounded-l-lg"
+              src="assets/Car-Loans.png"
+              alt=""
+            />
+          </div>
+          <div class="flex-1 p-4 md:p-8">
+            <h1 class="text-white text-[36px]">Auto Loan Calculator</h1>
+            <p class="text-white">
+              Use this car payment calculator to estimate monthly payments on
+              your next new or used auto loan.
+            </p>
+            <div class="m-4 p-4 flex flex-col items-center">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                <!-- Price -->
+                <div class="relative w-full max-w-xs">
+                  <input
+                    type="text"
+                    id="price"
+                    placeholder=" "
+                    class="peer w-full rounded-2xl border border-gray-200 bg-white px-4 pt-6 pb-2 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200"
+                  />
+                  <label
+                    for="price"
+                    class="absolute left-4 top-2 text-gray-400 text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm"
+                  >
+                    Price ($)
+                  </label>
+                </div>
+                <!-- Interest Rate -->
+                <div class="relative w-full max-w-xs">
+                  <input
+                    type="text"
+                    id="interestRate"
+                    placeholder=" "
+                    class="peer w-full rounded-2xl border border-gray-200 bg-white px-4 pt-6 pb-2 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200"
+                  />
+                  <label
+                    for="interestRate"
+                    class="absolute left-4 top-2 text-gray-400 text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm"
+                  >
+                    Interest Rate
+                  </label>
+                </div>
+
+                <!-- Loan Term (year) -->
+                <div class="relative w-full max-w-xs">
+                  <input
+                    type="text"
+                    id="loanTerm"
+                    placeholder=" "
+                    class="peer w-full rounded-2xl border border-gray-200 bg-white px-4 pt-6 pb-2 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200"
+                  />
+                  <label
+                    for="loanTerm"
+                    class="absolute left-4 top-2 text-gray-400 text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm"
+                  >
+                    Loan Term (year)
+                  </label>
+                </div>
+
+                <!-- Down Payment -->
+                <div class="relative w-full max-w-xs">
+                  <input
+                    type="text"
+                    id="downpayment"
+                    placeholder=" "
+                    class="peer w-full rounded-2xl border border-gray-200 bg-white px-4 pt-6 pb-2 text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200"
+                  />
+                  <label
+                    for="downpayment"
+                    class="absolute left-4 top-2 text-gray-400 text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm"
+                  >
+                    Down Payment
+                  </label>
+                </div>
+              </div>
+              <h2 class="text-white m-5 text-[20px]">
+                $
+                <span id="permont" class="font-semibold text-[24px]">0</span>
+                per month
+              </h2>
+              <button class="btn rounded-2xl w-full btn-primary">
+                Calculate
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- Shopping Cart System Modal for all pages -->
