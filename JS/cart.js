@@ -1,8 +1,6 @@
 // ==== cart.js ====
 const AllCartData = [];
 
-
-
 document.getElementById("clear-all").addEventListener("click", () => {
   clearCart();
   displayCart();
@@ -41,7 +39,6 @@ const displayCart = () => {
   document.getElementById("total").innerText = currentSubtotal - discount;
 };
 
-
 const AddtoCart = (id) => {
   if (!activeUser) {
     alert("login please");
@@ -58,7 +55,7 @@ const AddtoCart = (id) => {
       if (isDuplicate) {
         alert(`${isDuplicate.name} Already in Cart!`);
         return;
-      }else {
+      } else {
         const CartData = {
           id: id,
           img: SelectCar.image,
@@ -139,4 +136,3 @@ const handlePlaceOrder = () => {
 document
   .getElementById("placeOrderBtn")
   .addEventListener("click", handlePlaceOrder);
-

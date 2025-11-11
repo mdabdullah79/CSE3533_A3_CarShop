@@ -93,7 +93,7 @@
     },
     {
       "id": 9,
-      "image": "../assets/car/car.jpg",
+      "image": "../assets/car/car9.avif",
       "name": "BMW i4",
       "description": "Luxury electric sedan with dynamic driving and futuristic interior design.",
       "category": "Electric Car",
@@ -126,7 +126,7 @@
     },
     {
       "id": 12,
-      "image": "../assets/car/car.jpg",
+      "image": "../assets/car/car12.png",
       "name": "Royal Enfield Classic 350",
       "description": "Iconic cruiser motorcycle offering timeless design and powerful performance.",
       "category": "Bike",
@@ -159,7 +159,7 @@
     },
     {
       "id": 15,
-      "image": "../assets/car/car.jpg",
+      "image": "../assets/car/car15.jpeg",
       "name": "Isuzu D-Max",
       "description": "Durable truck offering strength, comfort, and excellent towing power.",
       "category": "Truck",
@@ -170,7 +170,7 @@
     },
     {
       "id": 16,
-      "image": "../assets/car/car.jpg",
+      "image": "../assets/car/car16.avif",
       "name": "Toyota Prius Hybrid",
       "description": "Eco-friendly hybrid car with excellent fuel efficiency and advanced features.",
       "category": "Hybrid Car",
@@ -181,7 +181,7 @@
     },
     {
       "id": 17,
-      "image": "https://i.ibb.co.com/pPzB8s5/honda-insight.jpg",
+      "image": "../assets/car/car17.avif",
       "name": "Honda Insight",
       "description": "Hybrid sedan offering a perfect blend of performance and efficiency.",
       "category": "Hybrid Car",
@@ -192,7 +192,7 @@
     },
     {
       "id": 18,
-      "image": "https://i.ibb.co.com/fDgwQpV/kia-nero.jpg",
+      "image": "../assets/car/car18.webp",
       "name": "Kia Niro Hybrid",
       "description": "Compact hybrid crossover with excellent mileage and spacious interior.",
       "category": "Hybrid Car",

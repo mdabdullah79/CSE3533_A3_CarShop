@@ -20,7 +20,7 @@ function showSignup() {
   signupSection.classList.remove("hidden");
 }
 
-
+const EmailError = document.getElementById("emalerror");
 
 // Sign Up
 const signupBtn = document.getElementById("signupBtn");
@@ -28,6 +28,13 @@ signupBtn.addEventListener("click", () => {
   const name = document.getElementById("signupName").value.trim();
   const email = document.getElementById("signupEmail").value.trim();
   const password = document.getElementById("signupPassword").value.trim();
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    EmailError.textContent = "Please enter a valid email address.";
+    EmailError.classList.remove("hidden");
+    return;
+  }
 
   if (!name || !email || !password) {
     alert("Please fill all fields!");
@@ -46,6 +53,7 @@ signupBtn.addEventListener("click", () => {
   setActiveUser(newUser);
   activeUser = newUser;
 //   showProfile();
+   window.location.href='index.html';
   alert("🎉 Account created successfully!");
 
 });
